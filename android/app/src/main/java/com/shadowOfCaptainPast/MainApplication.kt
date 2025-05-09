@@ -1,4 +1,4 @@
-package com.shadowsofcaptainpast
+package com.shadowOfCaptainPast
 
 import android.app.Application
 import com.facebook.react.PackageList
