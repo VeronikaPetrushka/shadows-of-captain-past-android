@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, TouchableOpacity, Text, StyleSheet, Modal, Alert, ScrollView, Switch } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
-import Slider from '@react-native-community/slider';
-import { useMusic } from '../shadowsHelpers/CaptainMusic.jsx';
 
 const CaptainSettings = () => {
     const [captainResetVisible, setCaptainResetVisible] = useState(false);
-    const { isPlaying, togglePlay, volume, setVolume } = useMusic();
     const [captainNotify, setCaptainNotify] = useState(false);
 
     useEffect(() => {
@@ -42,35 +39,6 @@ const CaptainSettings = () => {
 
             <ScrollView style={{ width: '100%' }}>
                 
-                    <View style={[styles.row, {marginTop: 150}]}>
-                        <Image
-                            source={require('../pastAssets/routeIcons/captainMusic.png')}
-                            style={{ width: 45, height: 45, resizeMode: 'contain', marginRight: 8 }}
-                        />
-                        <Image
-                            source={require('../pastAssets/routeNames/shadowMusic.png')}
-                            style={{ width: 84, height: 40, resizeMode: 'contain' }}
-                        />
-                    </View>
-
-                    <View style={{ height: 17, justifyContent: 'center', borderRadius: 20, backgroundColor: '#BA4603', paddingHorizontal: 5, marginBottom: 53 }}>
-                        <Slider
-                            style={{ width: '100%' }}
-                            minimumValue={0}
-                            maximumValue={1}
-                            step={0.01}
-                            minimumTrackTintColor="#BA4603"
-                            maximumTrackTintColor="#3E3E3E"
-                            thumbTintColor="#FB9301"
-                            value={volume}
-                            onValueChange={(val) => {
-                                setVolume(val);
-                                if (val === 0 && isPlaying) togglePlay();
-                                if (val > 0 && !isPlaying) togglePlay();
-                            }}
-                        />
-                    </View>
-
                     <View style={[styles.row, {justifyContent: 'space-between'}]}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image
@@ -93,7 +61,7 @@ const CaptainSettings = () => {
                             captainNotify && (
                                 <Image
                                     source={require('../pastAssets/routeIcons/onOff.png')}
-                                    style={{ width: 12, height: 12, resizeMode: 'contain', position: 'absolute', left: 6, top: 10, zIndex: 10 }}
+                                    style={{ width: 8, height: 8, resizeMode: 'contain', position: 'absolute', left: 14, top: 10, zIndex: 10 }}
                                 />
                             )
                         }
